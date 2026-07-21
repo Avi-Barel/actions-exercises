@@ -1,31 +1,20 @@
-# שם ה-Workflow שיופיע בטאב ה-Actions
 name: Hello Workflow
 
-# הגדרת טריגר: מתי ה-Workflow ירוץ
 on:
-  # ה-Workflow ירוץ על כל דחיפה (push) לענף main
   push:
     branches:
       - main
+  workflow_dispatch:
 
-# הגדרת ה-Jobs שירוצו ב-Workflow
 jobs:
-  # שם ה-Job הראשון
   hello:
-    # על איזו מערכת הפעלה ה-Job ירוץ
     runs-on: ubuntu-latest
-
-    # השלבים (Steps) שיבוצעו בתוך ה-Job
     steps:
-      # שלב 1: הדפסת הודעת פתיחה
       - name: Print Hello Message
         run: echo "Hello from GitHub Actions!"
 
-      # שלב 2: הדפסת תאריך ושעה נוכחיים
       - name: Print current date and time
         run: date
 
-      # שלב 3: הדפסת שם הענף (branch)
       - name: Print branch name
         run: echo "Branch: ${{ github.ref_name }}"
-
